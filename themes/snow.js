@@ -1,8 +1,8 @@
 import extend from 'extend';
 import Emitter from '../core/emitter';
 import BaseTheme, { BaseTooltip } from './base';
-import LinkBlot from '../formats/link';
-import { Range } from '../core/selection';
+// import LinkBlot from '../formats/link';
+// import { Range } from '../core/selection';
 import icons from '../ui/icons';
 
 
@@ -84,24 +84,24 @@ class SnowTooltip extends BaseTooltip {
       event.preventDefault();
       this.hide();
     });
-    this.quill.on(Emitter.events.SELECTION_CHANGE, (range, oldRange, source) => {
-      if (range == null) return;
-      if (range.length === 0 && source === Emitter.sources.USER) {
-        let [link, offset] = this.quill.scroll.descendant(LinkBlot, range.index);
-        if (link != null) {
-          this.linkRange = new Range(range.index - offset, link.length());
-          let preview = LinkBlot.formats(link.domNode);
-          this.preview.textContent = preview;
-          this.preview.setAttribute('href', preview);
-          this.show();
-          this.position(this.quill.getBounds(this.linkRange));
-          return;
-        }
-      } else {
-        delete this.linkRange;
-      }
-      this.hide();
-    });
+    // this.quill.on(Emitter.events.SELECTION_CHANGE, (range, oldRange, source) => {
+    //   if (range == null) return;
+    //   if (range.length === 0 && source === Emitter.sources.USER) {
+    //     let [link, offset] = this.quill.scroll.descendant(LinkBlot, range.index);
+    //     if (link != null) {
+    //       this.linkRange = new Range(range.index - offset, link.length());
+    //       let preview = LinkBlot.formats(link.domNode);
+    //       this.preview.textContent = preview;
+    //       this.preview.setAttribute('href', preview);
+    //       this.show();
+    //       this.position(this.quill.getBounds(this.linkRange));
+    //       return;
+    //     }
+    //   } else {
+    //     delete this.linkRange;
+    //   }
+    //   this.hide();
+    // });
   }
 
   show() {
