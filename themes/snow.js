@@ -1,4 +1,4 @@
-import extend from 'extend';
+// import extend from 'extend';
 import Emitter from '../core/emitter';
 import BaseTheme, { BaseTooltip } from './base';
 // import LinkBlot from '../formats/link';
@@ -34,28 +34,28 @@ class SnowTheme extends BaseTheme {
     }
   }
 }
-SnowTheme.DEFAULTS = extend(true, {}, BaseTheme.DEFAULTS, {
-  modules: {
-    toolbar: {
-      handlers: {
-        link: function(value) {
-          if (value) {
-            let range = this.quill.getSelection();
-            if (range == null || range.length == 0) return;
-            let preview = this.quill.getText(range);
-            if (/^\S+@\S+\.\S+$/.test(preview) && preview.indexOf('mailto:') !== 0) {
-              preview = 'mailto:' + preview;
-            }
-            let tooltip = this.quill.theme.tooltip;
-            tooltip.edit('link', preview);
-          } else {
-            this.quill.format('link', false);
-          }
-        }
-      }
-    }
-  }
-});
+// SnowTheme.DEFAULTS = extend(true, {}, BaseTheme.DEFAULTS, {
+//   modules: {
+//     toolbar: {
+//       handlers: {
+//         link: function(value) {
+//           if (value) {
+//             let range = this.quill.getSelection();
+//             if (range == null || range.length == 0) return;
+//             let preview = this.quill.getText(range);
+//             if (/^\S+@\S+\.\S+$/.test(preview) && preview.indexOf('mailto:') !== 0) {
+//               preview = 'mailto:' + preview;
+//             }
+//             let tooltip = this.quill.theme.tooltip;
+//             tooltip.edit('link', preview);
+//           } else {
+//             this.quill.format('link', false);
+//           }
+//         }
+//       }
+//     }
+//   }
+// });
 
 
 class SnowTooltip extends BaseTooltip {
