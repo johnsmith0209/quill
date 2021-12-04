@@ -8,6 +8,7 @@ class Link extends Inline {
     node.setAttribute('href', value);
     node.setAttribute('rel', 'noopener noreferrer');
     node.setAttribute('target', '_blank');
+    node.setAttribute('wf-editor-link-tooltip', '');
     return node;
   }
 
@@ -28,8 +29,7 @@ class Link extends Inline {
 Link.blotName = 'link';
 Link.tagName = 'A';
 Link.SANITIZED_URL = 'about:blank';
-Link.PROTOCOL_WHITELIST = ['http', 'https', 'mailto', 'tel'];
-
+Link.PROTOCOL_WHITELIST = ['http', 'https'];
 
 function sanitize(url, protocols) {
   let anchor = document.createElement('a');
@@ -37,6 +37,5 @@ function sanitize(url, protocols) {
   let protocol = anchor.href.slice(0, anchor.href.indexOf(':'));
   return protocols.indexOf(protocol) > -1;
 }
-
 
 export { Link as default, sanitize };
